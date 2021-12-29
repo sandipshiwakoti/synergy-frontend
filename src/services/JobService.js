@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/jobs";
+// const API_URL = "http://localhost:8080/api/jobs";
+const API_URL = "https://synergy-hrm-backend.herokuapp.com/api/jobs";
 
 class JobService {
   getJob(id) {

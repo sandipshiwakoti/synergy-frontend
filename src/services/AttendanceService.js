@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/attendances";
+// const API_URL = "http://localhost:8080/api/attendances";
+const API_URL = "https://synergy-hrm-backend.herokuapp.com/api/attendances";
 
 class AttendanceService {
   addAttendance(employeeId, attendance) {
