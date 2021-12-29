@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/leaves";
+// const API_URL = "http://localhost:8080/api/leaves";
 const API_URL = "https://synergy-hrm-backend.herokuapp.com/api/leaves";
 
 class LeaveService {
