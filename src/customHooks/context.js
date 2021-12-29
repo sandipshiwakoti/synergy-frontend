@@ -6,16 +6,27 @@ import { ToastContainer, toast } from "react-toastify";
 const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
+  // if (!localStorage.getItem("isAuth")) {
+  //   localStorage.setItem("isAuth", false);
+  // }
+  // if (!localStorage.getItem("authUser")) {
+  //   localStorage.setItem("authUser", { email: "", role: "" });
+  // }
+
   const [isAuth, setAuth] = useState(
-    JSON.parse(localStorage.getItem("isAuth")) || null
+    JSON.parse(JSON.stringify(localStorage.getItem("isAuth")))
   );
   const [authUser, setAuthUser] = useState(
-    JSON.parse(localStorage.getItem("authUser") || { email: "", role: "" })
+    JSON.parse(
+      JSON.stringify(localStorage.getItem("authUser")) || {
+        email: "",
+        role: "",
+      }
+    )
   );
 
   const login = async (user) => {
     const { data } = await AuthService.checkAuth(user);
-    console.log(data);
     await setAuth(data);
     await setAuthUser({ email: user.email, role: user.role });
     localStorage.setItem("isAuth", data);
