@@ -7,7 +7,7 @@ const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
   const [isAuth, setAuth] = useState(
-    JSON.parse(localStorage.getItem("isAuth"))
+    JSON.parse(localStorage.getItem("isAuth")) || null
   );
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem("authUser") || { email: "", role: "" })
@@ -15,6 +15,7 @@ const AppProvider = ({ children }) => {
 
   const login = async (user) => {
     const { data } = await AuthService.checkAuth(user);
+    console.log(data);
     await setAuth(data);
     await setAuthUser({ email: user.email, role: user.role });
     localStorage.setItem("isAuth", data);
